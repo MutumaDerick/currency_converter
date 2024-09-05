@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class CurrencyConverterMaterialPage extends StatelessWidget {
   const CurrencyConverterMaterialPage({super.key});
@@ -23,30 +22,40 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
           children: [
             const Text(
               '0',
-              style: const TextStyle(
+              style: TextStyle(
                   fontSize: 48,
                   fontWeight: FontWeight.bold,
                   color: Colors.blueAccent),
             ),
-            TextField(
-              style: const TextStyle(
-                fontSize: 24,
-                color: Colors.black,
-              ),
-              decoration: InputDecoration(
-                hintText: 'Enter amount',
-                hintStyle: const TextStyle(
+            Container(
+              padding: const EdgeInsets.all(16),
+              margin: const EdgeInsets.all(16),
+              child: TextField(
+                style: const TextStyle(
                   fontSize: 24,
                   color: Colors.black,
                 ),
-                prefixIcon: const Icon(Icons.monetization_on),
-                prefixIconColor: const Color.fromARGB(191, 0, 0, 0),
-                filled: true,
-                fillColor: Colors.white,
-                focusedBorder: border,
-                enabledBorder: border,
+                decoration: InputDecoration(
+                  hintText: 'Enter amount',
+                  hintStyle: const TextStyle(
+                    fontSize: 24,
+                    color: Colors.black,
+                  ),
+                  prefixIcon: const Icon(Icons.monetization_on),
+                  prefixIconColor: const Color.fromARGB(191, 0, 0, 0),
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: border,
+                  enabledBorder: border,
+                ),
+                keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true,
+                  ),
               ),
-              keyboardType: TextInputType.number,
+            ),
+            TextButton(
+              onPressed: () {},
+              child: Text('Convert'),
             ),
           ],
         ),
