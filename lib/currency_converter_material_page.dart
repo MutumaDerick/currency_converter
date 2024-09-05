@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+// 1. Create a variable that stores the converted currency value
+// 2. Create a function that multiplesthe value given by the text field by 0.75
+// 3. Store the value in the variable
+// 4. Display the value in the Text widget
 
 class CurrencyConverterMaterialPage extends StatelessWidget {
   const CurrencyConverterMaterialPage({super.key});
@@ -7,14 +11,20 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final border = OutlineInputBorder(
         borderSide: const BorderSide(
-          color: Colors.blueAccent,
+          color: Colors.black54,
           width: 2,
           style: BorderStyle.solid,
         ),
-        borderRadius: BorderRadius.circular(60));
+        borderRadius: BorderRadius.circular(20));
 
     return Scaffold(
       backgroundColor: Colors.white54,
+      appBar: AppBar(
+        title: const Text('Currency Converter'),
+        centerTitle: true,
+        backgroundColor: Colors.blueGrey,
+        elevation: 0,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -25,7 +35,7 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
               style: TextStyle(
                   fontSize: 48,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blueAccent),
+                  color: Colors.black),
             ),
             Container(
               padding: const EdgeInsets.all(16),
@@ -50,12 +60,26 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                 ),
                 keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
-                  ),
+                ),
               ),
             ),
-            TextButton(
-              onPressed: () {},
-              child: Text('Convert'),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: ElevatedButton(
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.black,
+                  minimumSize: const Size(double.infinity, 50),
+                  padding: const EdgeInsets.all(16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                onPressed: () {
+                  debugPrint('Button pressed');
+                },
+                child: const Text('Convert'),
+              ),
             ),
           ],
         ),
