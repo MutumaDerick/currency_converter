@@ -4,8 +4,30 @@ import 'package:flutter/material.dart';
 // 3. Store the value in the variable
 // 4. Display the value in the Text widget
 
-class CurrencyConverterMaterialPage extends StatelessWidget {
+class CurrencyConverterMaterialPage extends StatefulWidget {
   const CurrencyConverterMaterialPage({super.key});
+
+  @override
+  State<CurrencyConverterMaterialPage> createState() =>
+      _CurrencyConverterMaterialPageState();
+}
+
+class _CurrencyConverterMaterialPageState
+    extends State<CurrencyConverterMaterialPage> {
+  double result = 0;
+  final amountController = TextEditingController();
+
+  void convert() {
+    setState(() {
+      result = double.parse(amountController.text) * 135;
+    });
+  }
+
+  @override
+  void dispose() {
+    amountController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +52,9 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
-              '0',
-              style: TextStyle(
+            Text(
+              'Ksh ${result.toStringAsFixed(2)}',
+              style: const TextStyle(
                   fontSize: 48,
                   fontWeight: FontWeight.bold,
                   color: Colors.black),
@@ -41,6 +63,7 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               margin: const EdgeInsets.all(16),
               child: TextField(
+                controller: amountController,
                 style: const TextStyle(
                   fontSize: 24,
                   color: Colors.black,
@@ -75,9 +98,7 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                onPressed: () {
-                  debugPrint('Button pressed');
-                },
+                onPressed: convert,
                 child: const Text('Convert'),
               ),
             ),
